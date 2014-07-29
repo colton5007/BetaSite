@@ -1,0 +1,155 @@
+<!doctype html>
+<html class="no-js" lang="">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title> Colton's Site </title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- Place favicon.ico and apple-touch-icon(s) in the root directory -->
+
+		<link rel="stylesheet" href="css/normalize.css">
+		<link rel="stylesheet" href="css/main.css">
+		<script src="js/vendor/modernizr-2.8.0.min.js"></script>
+		<script src="js/vendor/jquery-1.11.1.min.js"></script>
+
+	</head>
+	<body onload="setText()" onresize="setText()">
+		<!--[if lt IE 8]>
+		<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+		<![endif]-->
+
+		<!-- Add your site or application content here -->
+		<div class = "main">
+			<div id = "home">
+				<nav>
+					<ul class="fancyNav">
+						<li id="homeli">
+							<a href="#home" class="navButton">Home</a>
+						</li>
+						<li id="projectsli" class="navButton">
+							<a href="#projects">Projects</a>
+						</li>
+						<li id="aboutli" class="navButton">
+							<a href="#about">About</a>
+						</li>
+						<li id="contactli" class="navButton">
+							<a href="#contact">Contact</a>
+						</li>
+					</ul>
+				</nav>
+				<script>
+					function setText() {
+						var size = Math.round((window.innerWidth * window.innerHeight) / 30000);
+						var nodes = document.body.getElementsByClassName('navButton');
+						for (var i = 0; i < nodes.length; i++) {
+							nodes[i].style.fontSize = size + "px";
+						}
+					};
+				</script>
+				<!--<script>
+				var x = document.createElement("IMG");
+				x.setAttribute("src", "img/colton.JPG");
+				x.setAttribute("id", "imgMe");
+				var w = window.innerWidth * 0.9;
+				x.width = Math.round(w);
+				//document.body.getElementsByClassName('main').getElementById('home').appendChild(x);
+				document.getElementById('home').appendChild(x);
+				</script>-->
+			</div>
+			<div id="projects">
+				<h1>Projects</h1>
+				<div id="projFoward" onclick="moveProject(1)">
+					<img src="img/foward-arrow.png"/>
+				</div>
+				<div id="projBack" onclick="moveProject(-1)">
+					<img src="img/back-arrow.png"/>
+				</div>
+				<ul id="projList" onactivate="setupProjects()">
+
+				</ul>
+				<script>
+					var current = 1;
+					var max;
+					function Project(name, infoText, picture) {
+						this.name = name;
+						this.infoText = infoText;
+						this.picture = picture;
+
+						var project = document.createElement('div');
+						var header = document.createElement('h2');
+						var headerContent = document.createTextNode(name);
+						header.appendChild(headerContent);
+						project.setAttribute('class', 'projContent');
+
+						var info = document.createElement('p');
+						var infoContent = document.createTextNode(infoText);
+						info.appendChild(infoContent);
+
+						project.style.background = "url(" + picture + ")";
+						var size = getProjectSize;
+						project.style.width = size.width + 'px';
+						project.style.height = size.height + 'px';
+						this.div = project;
+						var listItem = document.createElement('li');
+						project.appendChild(header);
+						project.appendChild(info);
+						listItem.appendChild(project);
+						document.getElementById('projList').appendChild(listItem);
+					}
+
+					function getProjectSize() {
+						var size = new Object();
+						size.height = 750;
+						size.width = Math.round(window.innerWidth * 0.8);
+						return size;
+					}
+
+					function moveProject(direction) {
+
+						document.getElementById('projList').childNodes[current].firstChild.setAttribute('class', 'projContent');
+
+						if(current)
+
+						document.getElementById('projList').childNodes[current].firstChild.setAttribute('class', 'displayProj');
+					}
+
+					function setupProjects() {
+						var proj1 = new Project('name', 'info', 'img/colton.JPG');
+						var prok2 = new Project('name2', 'info', 'img/colton.JPG');
+						document.getElementsByClassName('projContent')[0].setAttribute('class', 'displayProj');
+					}
+				</script>
+			</div>
+			<div id="about">
+
+			</div>
+			<div id="contact">
+
+			</div>
+		</div>
+		<script>
+			window.jQuery || document.write('<script src="js/vendor/jquery-1.11.1.min.js"><\/script>');
+		</script>
+		<script src="js/plugins.js"></script>
+		<script src="js/main.js"></script>
+
+		<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+		<!--/<script>
+		( function(b, o, i, l, e, r) {
+		b.GoogleAnalyticsObject = l;
+		b[l] || (b[l] = function() {
+		(b[l].q = b[l].q || []).push(arguments);
+		});
+		b[l].l = +new Date;
+		e = o.createElement(i);
+		r = o.getElementsByTagName(i)[0];
+		e.src = '//www.google-analytics.com/analytics.js';
+		r.parentNode.insertBefore(e, r);
+		}(window, document, 'script', 'ga'));
+		ga('create', 'UA-XXXXX-X', 'auto');
+		ga('send', 'pageview');
+		</script>-->
+	</body>
+</html>
