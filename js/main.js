@@ -94,8 +94,6 @@ function moveProject(direction) {
 }
 
 function setupProjects() {
-	var proj1 = new Project('Project 1', 'Info of the important info must be vindicated in order to test this stuff', 'img/colton.JPG');
-	var proj2 = new Project('Project 2', 'info', 'img/colton.JPG');
 	var proj3 = new Project('Project 3', 'Thrid project for test the project div on website', 'img/home.png');
 	var proj4 = new Project('Project 4', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'img/back-arrow.png');
 	document.getElementsByClassName('projContent')[0].setAttribute('class', 'displayProj');
