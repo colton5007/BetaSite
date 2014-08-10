@@ -15,7 +15,7 @@
 		<script src="js/vendor/jquery-1.11.1.min.js"></script>
 
 	</head>
-	<body onload="setText()" onresize="setText()">
+	<body onload="setupPage()" onresize="setText()" onscroll="checkHide()">
 		<!--[if lt IE 8]>
 		<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 		<![endif]-->
@@ -23,114 +23,61 @@
 		<!-- Add your site or application content here -->
 		<div class = "main">
 			<div id = "home">
+				<div id="title">
+					<h1 id="titleContent">
+						Colton's Website
+					</h1>
+				</div>
 				<nav>
 					<ul class="fancyNav">
 						<li id="homeli">
-							<a href="#home" class="navButton">Home</a>
+							<a class="navButton">Home</a>
 						</li>
 						<li id="projectsli" class="navButton">
-							<a href="#projects">Projects</a>
+							<a onclick="scroll(document.getElementById('projects'), 0)">Projects</a>
 						</li>
 						<li id="aboutli" class="navButton">
-							<a href="#about">About</a>
+							<a onclick="scroll(document.getElementById('about'), 0)">About</a>
 						</li>
 						<li id="contactli" class="navButton">
-							<a href="#contact">Contact</a>
+							<a onclick="scroll(document.getElementById('contact'), 0)">Contact</a>
 						</li>
 					</ul>
 				</nav>
-				<script>
-					function setText() {
-						var size = Math.round((window.innerWidth * window.innerHeight) / 30000);
-						var nodes = document.body.getElementsByClassName('navButton');
-						for (var i = 0; i < nodes.length; i++) {
-							nodes[i].style.fontSize = size + "px";
-						}
-					};
-				</script>
-				<!--<script>
-				var x = document.createElement("IMG");
-				x.setAttribute("src", "img/colton.JPG");
-				x.setAttribute("id", "imgMe");
-				var w = window.innerWidth * 0.9;
-				x.width = Math.round(w);
-				//document.body.getElementsByClassName('main').getElementById('home').appendChild(x);
-				document.getElementById('home').appendChild(x);
-				</script>-->
+				<div id="homeText">
+					<p>
+						  Welcome to 
+						<br> Colton's Website! 
+						<br> Enjoy Your Stay!
+					</p>
+				</div>
+
 			</div>
 			<div id="projects">
 				<h1>Projects</h1>
-				<div id="projFoward" onclick="moveProject(1)">
-					<img src="img/foward-arrow.png"/>
-				</div>
-				<div id="projBack" onclick="moveProject(-1)">
-					<img src="img/back-arrow.png"/>
-				</div>
-				<ul id="projList" onactivate="setupProjects()">
+				<ul id="projList">
 
 				</ul>
-				<script>
-					var current = 1;
-					var max;
-					function Project(name, infoText, picture) {
-						this.name = name;
-						this.infoText = infoText;
-						this.picture = picture;
-
-						var project = document.createElement('div');
-						var header = document.createElement('h2');
-						var headerContent = document.createTextNode(name);
-						header.appendChild(headerContent);
-						project.setAttribute('class', 'projContent');
-
-						var info = document.createElement('p');
-						var infoContent = document.createTextNode(infoText);
-						info.appendChild(infoContent);
-
-						project.style.background = "url(" + picture + ")";
-						var size = getProjectSize;
-						project.style.width = size.width + 'px';
-						project.style.height = size.height + 'px';
-						this.div = project;
-						var listItem = document.createElement('li');
-						project.appendChild(header);
-						project.appendChild(info);
-						listItem.appendChild(project);
-						document.getElementById('projList').appendChild(listItem);
-					}
-
-					function getProjectSize() {
-						var size = new Object();
-						size.height = 750;
-						size.width = Math.round(window.innerWidth * 0.8);
-						return size;
-					}
-
-					function moveProject(direction) {
-
-						document.getElementById('projList').childNodes[current].firstChild.setAttribute('class', 'projContent');
-
-						if(current)
-
-						document.getElementById('projList').childNodes[current].firstChild.setAttribute('class', 'displayProj');
-					}
-
-					function setupProjects() {
-						var proj1 = new Project('name', 'info', 'img/colton.JPG');
-						var prok2 = new Project('name2', 'info', 'img/colton.JPG');
-						document.getElementsByClassName('projContent')[0].setAttribute('class', 'displayProj');
-					}
-				</script>
 			</div>
 			<div id="about">
-
+				<h1>About Colton</h1>
+				<div id="c1">
+					
+				</div>
+				<div id="c2">
+					
+				</div>
 			</div>
 			<div id="contact">
-
+				<h1>Contact</h1>
+			</div>
+			<div id="homeButton" onclick="scroll(document.getElementById('home'), 0.6)">
+				<img src="img/home.png"/>
 			</div>
 		</div>
 		<script>
 			window.jQuery || document.write('<script src="js/vendor/jquery-1.11.1.min.js"><\/script>');
+
 		</script>
 		<script src="js/plugins.js"></script>
 		<script src="js/main.js"></script>
